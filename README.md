@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## 常用命令
+> ng g component components/header 在components目录下创建header组件
+ng g service service/hero 在service目录下创建hero服务
+ng generate module app-routing --flat --module=app 添加route
+ng g pipe pipe/test 创建pipe自定义管道
+ng add ng-zorro-antd 自动构建添加ng-antd组件
