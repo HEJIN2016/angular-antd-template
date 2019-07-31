@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {RxjsService} from '../../service/rxjs.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
+import {UserService} from '../../service/user.service'
 
 @Component({
   selector: 'app-header',
@@ -17,12 +18,15 @@ export class HeaderComponent implements OnInit {
 
   @Input() msg: string;
 
+  userInfo: object;
+
   /*用EventEmitter和output装饰器配合使用 <string>指定类型变量*/
   @Output() private outer = new EventEmitter<string>();
   @Output() private outer1 = new EventEmitter<object>();
 
-  constructor(public request: RxjsService, public $http: HttpClient) {
+  constructor(public request: RxjsService, public $http: HttpClient, public userService: UserService) {
     this.content1 = '<h1>1212</h1>';
+    this.userInfo = userService.getUserInfo();
   }
 
   getData(val) {
@@ -51,6 +55,13 @@ export class HeaderComponent implements OnInit {
     this.sendData();
 
     this.getAppData();
+
+    setTimeout(() => {
+      this.userService.setUserInfo({
+        name: 'hejin2',
+        id: 22
+      })
+    }, 3000);
 
     // 调用rxjs异步方法
     let sub = this.request.getRxData().subscribe((data) => {

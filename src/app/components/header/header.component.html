@@ -6,5 +6,6 @@
   <p>{{ date | date:'yyyy-MM-dd HH:mm:ss' }}</p>
   <div class="content" [id]="id" [innerHTML]="content1" (click)="getData(1)"></div>
   {{ "hello" | test }}
+  name: {{ userService.getUserInfo().name }}
   {{msg}}
 </div>
